@@ -1,0 +1,23 @@
+// loader
+.custom-loader {
+  border: 0.125rem solid $dark; /* Light grey */
+  border-top: 0.125rem solid $light; /* Blue */
+  border-bottom: 0.125rem solid $light; /* Blue */
+  border-left: 0.125rem solid $light;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  animation: spin 1s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
