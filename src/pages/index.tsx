@@ -1,22 +1,18 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { Layout } from '../templates/Layout';
+import { Container } from 'react-bootstrap';
+import { routes } from '../config/_routes';
 
 export default function Home() {
   return (
-    <div className="container">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1 className="title">
-          Read{' '}
-          <Link href="/admin">
-            <a>this page!</a>
-          </Link>
-        </h1>
-      </main>
-    </div>
+    <Layout title="Home">
+      <Container>
+        <h1 className="mt-5">Home Page</h1>
+        <Link href={routes.ADMIN}>
+          <a>Admin Page</a>
+        </Link>
+      </Container>
+    </Layout>
   );
 }

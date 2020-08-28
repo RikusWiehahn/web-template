@@ -1,0 +1,10 @@
+{
+  "short_name": "App",
+  "name": "App",
+  "start_url": ".",
+  "display": "minimal-ui",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "scope": "/",
+  "icons": []
+}

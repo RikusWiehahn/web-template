@@ -10,6 +10,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import '../../public/static/nprogress.css';
 import '../../public/static/ReactToastify.css';
 import '../config/style.scss';
+import { LoadingIndicator } from '../components/LoadingIndicator';
 
 Router.events.on('routeChangeStart', (url: string) => {
   console.log(`%cLoading: ${url}`, 'color: green');
@@ -47,8 +48,12 @@ class MyApp extends App<Props> {
         />
         <Provider store={reduxStore}>
           <PersistGate
-            // loading={<LoadingIndicator fullscreen />}
-            loading={<Component {...pageProps} />}
+            loading={
+              <div>
+                <LoadingIndicator fullscreen />
+                <Component {...pageProps} />
+              </div>
+            }
             persistor={persistor}
           >
             <Component {...pageProps} />
