@@ -4,66 +4,65 @@ import Link from 'next/link';
 import { routes } from '../config/_routes';
 import { MenuUtility } from './MenuUtility';
 import withRouter, { WithRouterProps } from 'next/dist/client/with-router';
+import Head from 'next/head';
 
 interface Props extends WithRouterProps {
   children: JSX.Element | null;
   title?: string;
+  header?: string;
   banner?: JSX.Element | null;
   hideFooter?: boolean;
 }
 
 class _Layout extends Component<Props> {
-  renderFooter = () => {
-    if (!this.props.hideFooter) {
-      return (
-        <div style={{ minHeight: '4rem' }} className="d-flex">
-          <Container>
-            <Row className="mt-2">
-              <Col>
-                <div className="d-flex">
-                  <Button
-                    variant="link"
-                    onClick={() => this.props.router.push(routes.HOME)}
-                  >
-                    <h4 className="">Home</h4>
-                  </Button>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </div>
-      );
-    }
-  };
   render() {
+    const { title } = this.props;
     return (
       <div className="bg-light" style={{ height: '100vh' }}>
+        <Head>
+          <title>{title}</title>
+        </Head>
+
         <div
-          id="scroll-container"
-          style={{ height: 'calc(100vh)', overflowY: 'auto' }}
+          style={{
+            height: 'calc(100vh)',
+            overflowY: 'auto',
+            paddingTop: '4rem',
+          }}
         >
-          <Container
-            fluid
-            className="m-0 p-0"
-            style={{ position: 'fixed', top: 0, zIndex: 9999 }}
-          >
-            <div style={{ height: '3rem' }} className="p-1 d-flex ">
-              <div style={{ width: '4rem' }}>
-                <MenuUtility />
-              </div>
-              <div style={{ flex: 1 }}>
-                <h4 className="pt-1 m-0 text-center"></h4>
-              </div>
-              <div style={{ width: '4rem' }}></div>
-            </div>
-          </Container>
           {this.props.banner}
-          <Container style={{ minHeight: '100vh' }}>
+          <Container fluid style={{ minHeight: '100vh' }}>
             <Row>
               <Col>{this.props.children}</Col>
             </Row>
           </Container>
-          {this.renderFooter()}
+          <Container
+            fluid
+            className="m-0 p-0"
+            style={{ position: 'fixed', top: 0 }}
+          >
+            <div
+              style={{ height: '4rem' }}
+              className="bg-primary p-2 d-flex shadow-sm"
+            >
+              <div
+                className="d-flex align-items-center"
+                style={{ width: '6rem' }}
+              >
+                <MenuUtility />
+              </div>
+              <div style={{ flex: 1 }}>
+                <h4 className="pt-1 m-0 text-center">
+                  <Link href={routes.HOME}>
+                    <a className="text-center text-light">
+                      {this.props.header || 'Blog'}
+                    </a>
+                  </Link>
+                </h4>
+              </div>
+              <div style={{ width: '5rem' }}></div>
+            </div>
+          </Container>
         </div>
       </div>
     );
