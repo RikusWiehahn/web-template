@@ -6,8 +6,8 @@ import { persistReducer } from 'redux-persist';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
 // default reducers
-import { PostReducer } from '../_post/PostReducer';
-import { Post } from '../_post/PostInterfaces';
+import { SplitterReducer } from '../_splitter/SplitterReducer';
+import { Splitter } from '../_splitter/SplitterInterfaces';
 
 // Interfaces
 interface CustomWindow extends Window {
@@ -16,12 +16,12 @@ interface CustomWindow extends Window {
 declare let window: CustomWindow;
 
 export interface StoreState {
-  post: Post;
+  splitter: Splitter;
 }
 
 // Config
 const reducers: any = combineReducers<StoreState>({
-  post: PostReducer,
+  splitter: SplitterReducer,
 });
 
 const persistConfig = {

@@ -1,17 +1,15 @@
-import { PostAction } from '../_post/PostReducer';
-import { Post } from '../_post/PostInterfaces';
+import { Splitter } from '../_splitter/SplitterInterfaces';
 
-export type ReducerType = 'POST_REDUCER';
+export type ReducerType = 'SPLITTER_REDUCER';
 
-export const ReducerTypes = {
-  POST_REDUCER: <ReducerType>'POST_REDUCER',
-};
-
-export type Action = PostAction;
-
-export const updatePOSTState = (input: Post): PostAction => {
+export interface SplitterAction {
+  type: ReducerType;
+  payload: Splitter;
+}
+export type UpdateSplitterState = (input: Splitter) => SplitterAction;
+export const updateSplitterState: UpdateSplitterState = (input) => {
   return {
-    type: ReducerTypes.POST_REDUCER,
+    type: 'SPLITTER_REDUCER',
     payload: input,
   };
 };

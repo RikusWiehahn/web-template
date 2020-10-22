@@ -5,13 +5,8 @@ import { routes } from '../config/_routes';
 
 export default function Home() {
   return (
-    <Layout title="Home" header="web app">
-      <div>
-        <h1 className="mt-5">Home Page</h1>
-        <Link href={routes.ADMIN}>
-          <a>Admin Page</a>
-        </Link>
-      </div>
+    <Layout title="Sentence Splitter" header="Sentence Splitter">
+      <div className="pt-5">Home</div>
     </Layout>
   );
 }
