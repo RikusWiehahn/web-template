@@ -11,57 +11,41 @@ interface Props extends WithRouterProps {
   title?: string;
   header?: string;
   banner?: JSX.Element | null;
-  hideFooter?: boolean;
 }
 
 class _Layout extends Component<Props> {
   render() {
-    const { title } = this.props;
     return (
       <div className="bg-light" style={{ height: '100vh' }}>
         <Head>
-          <title>{title}</title>
+          <title>{this.props.title || ''}</title>
         </Head>
-
         <div
-          style={{
-            height: 'calc(100vh)',
-            overflowY: 'auto',
-            paddingTop: '4rem',
-          }}
+          id="scroll-container"
+          style={{ height: 'calc(100vh)', overflowY: 'auto' }}
         >
-          {this.props.banner}
-          <Container fluid style={{ minHeight: '100vh' }}>
-            <Row>
-              <Col>{this.props.children}</Col>
-            </Row>
-          </Container>
           <Container
             fluid
-            className="m-0 p-0"
-            style={{ position: 'fixed', top: 0 }}
+            className="m-0 p-0 bg-dark"
+            style={{ position: 'fixed', top: 0, zIndex: 0 }}
           >
-            <div
-              style={{ height: '4rem' }}
-              className="bg-primary p-2 d-flex shadow-sm"
-            >
-              <div
-                className="d-flex align-items-center"
-                style={{ width: '6rem' }}
-              >
+            <div style={{ height: '3rem' }} className="p-1 d-flex ">
+              <div style={{ width: '4rem' }}>
                 <MenuUtility />
               </div>
               <div style={{ flex: 1 }}>
                 <h4 className="pt-1 m-0 text-center">
-                  <Link href={routes.HOME}>
-                    <a className="text-center text-light">
-                      {this.props.header || 'Blog'}
-                    </a>
-                  </Link>
+                  {this.props.header || ''}
                 </h4>
               </div>
-              <div style={{ width: '5rem' }}></div>
+              <div style={{ width: '4rem' }}></div>
             </div>
+          </Container>
+          {this.props.banner}
+          <Container style={{ minHeight: '100vh' }}>
+            <Row>
+              <Col>{this.props.children}</Col>
+            </Row>
           </Container>
         </div>
       </div>

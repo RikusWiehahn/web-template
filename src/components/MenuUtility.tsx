@@ -76,9 +76,8 @@ class _MenuUtility extends Component<ScreenProps, ScreenState> {
   render() {
     return (
       <>
-        <Button onClick={this._toggleModal} variant="dark" className="p-0 pr-2">
-          <FiMenu className="p-0 m-2" />
-          Menu
+        <Button onClick={this._toggleModal} variant="dark" className="p-1">
+          <FiMenu className="m-2" />
         </Button>
         {this.renderModal()}
       </>
