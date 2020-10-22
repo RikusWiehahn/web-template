@@ -34,7 +34,7 @@ class _Layout extends Component<Props> {
                 <MenuUtility />
               </div>
               <div style={{ flex: 1 }}>
-                <h4 className="pt-1 m-0 text-center">
+                <h4 className="pt-1 m-0 text-white text-center">
                   {this.props.header || ''}
                 </h4>
               </div>
