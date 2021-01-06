@@ -15,7 +15,7 @@
     "@types/react-redux": "^7.1.9",
     "@types/redux-logger": "^3.0.8",
     "@types/socket.io-client": "^1.4.33",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.2",
     "next": "9.3.5",
     "nprogress": "^0.2.0",
